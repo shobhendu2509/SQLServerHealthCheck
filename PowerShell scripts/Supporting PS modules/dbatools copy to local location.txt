@@ -1,0 +1,1 @@
+Copy the dbatools folder to here on the server: C:\Program Files\WindowsPowerShell\Modules

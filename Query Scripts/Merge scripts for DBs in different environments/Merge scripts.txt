@@ -1,0 +1,32 @@
+Run the GetData.ps1 Powershell script in all 3 environments to get the dat you want.
+Run a backup of the DBAdmin databases on both the DEV and TEST management servers.
+Copy those backups to the Pebble IT management server in the Comcare (production) domain.
+Restore the respective databases as DBAdmin_DEV and DBAdmin_TEST.
+Use the merge scripts to insert the rows from those tables into the main DBAdmin database tables for centralised reporting.
+
+/****** DEV Backup script*******/
+----------------------------------
+USE [DBAdmin]
+EXECUTE dbo.DatabaseBackup
+ @Databases = 'DBAdmin',
+ @Directory = 'C:\PebbleIT\TempDBAdminBackup',
+ @BackupType = 'FULL',
+ @Verify = 'Y',
+ @Compress = 'Y',
+ @CheckSum = 'Y',
+ @CopyOnly = 'Y',
+ @LogToTable = 'Y';
+
+
+/****** TEST Backup script *******/
+-----------------------------------
+USE [DBAdmin]
+EXECUTE dbo.DatabaseBackup
+ @Databases = 'DBAdmin',
+ @Directory = 'C:\PebbleIT\TempDBAdminBackup',
+ @BackupType = 'FULL',
+ @Verify = 'Y',
+ @Compress = 'Y',
+ @CheckSum = 'Y',
+ @CopyOnly = 'Y',
+ @LogToTable = 'Y';
