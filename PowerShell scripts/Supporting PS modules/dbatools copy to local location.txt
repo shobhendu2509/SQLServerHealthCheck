@@ -1,1 +1,11 @@
 Copy the dbatools folder to here on the server: C:\Program Files\WindowsPowerShell\Modules
+
+You may need to set the execution policy for powershell on the server if its never been set.
+Run this: set-executionpolicy ByPass
+Select 'Yes to all' when prompted.
+
+To import the dbatools module run: Import-Module dbatools
+If that doesnt work run this: Import-Module “C:\Program Files\WindowsPowerShell\Modules\dbatools\dbatools.psd1”
+
+Run this to test the powershell dbatools module: Get-Help Test-DbaLastBackup -detailed
+It may prompt you to download the help files, click yes.

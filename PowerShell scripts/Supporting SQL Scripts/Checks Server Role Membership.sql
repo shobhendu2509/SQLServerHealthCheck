@@ -1,14 +1,15 @@
 /**************************************************************************************************************
 	Purpose:	Fixed Server role membership - including SYSADMIN
 				
-	Version			1.0
+	Version			1.1
 	Created by:		Tim Roberts
-	Date Created:	2018-10-26
+	Date Created:	2019-04-08
 
 	Changes:
 	Author		Date		Ver		Notes
 	--------------------------------------------------------------------------------------
 	TR			2018-10-26	1.0		Initial Release.
+	TR			2019-04-08	1.1		Removed the 'GO' command as some powershell executions error with this. It's not needed, so just removed.
 
 
 NOTES:
@@ -19,7 +20,6 @@ Use this to get a full list of members to the Fixed server roles on a server. Gr
 
 
 USE master
-GO
 
 SELECT  p.name AS [loginname] ,
         p.type ,
