@@ -67,6 +67,8 @@ More information: https://docs.microsoft.com/en-us/sql/relational-databases/syst
 ******/
 
 EXEC [DBAdmin].[dbo].[sp_Agent_jobs]
+SELECT * FROM [DBAdmin].[dbo].[vwAgent_jobs]
+ORDER BY Environment, ServerName, [Job Name] ASC, [LastRun] DESC;
 
 
 /****

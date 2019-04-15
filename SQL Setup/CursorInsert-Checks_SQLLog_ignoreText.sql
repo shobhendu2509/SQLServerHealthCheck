@@ -16,6 +16,7 @@ Version Date		Name			Modification
 1.1		04/02/2019	Tim Roberts		Updated to use the SQL Instance name as opposed the machine name. Otherwise the results wont join properly in the query. 
 									Some customers have their default instance named.
 									Also added extra lines for SQL 2005 servers.
+1.2		11/04/2019	Tim Roberts		Updated the 'Log was backed up' exclusion to include SQL 2017 instances.
 
 Look for
 ==========
@@ -50,7 +51,7 @@ BEGIN
 (@ServerName, 1, 'CHECKDB for database%finished without errors on%'),
 (@ServerName, 1, 'DBCC CHECKDB%found 0 errors and repaired 0 errors%'),
 (@ServerName, 1, 'BACKUP DATABASE WITH DIFFERENTIAL successfully%'),
-(@ServerName, 1, 'Log was backed up%This is an informational message only. No user action is required%'),
+(@ServerName, 1, 'Log was backed up%'),
 (@ServerName, 1, 'Database backed up%This is an informational message only. No user action is required%'),
 (@ServerName, 1, 'DBCC CHECKTABLE%found 0 errors and repaired 0 errors%'),
 (@ServerName, 1, '%transactions rolled forward in database%This is an informational message only. No user action is required%'),
