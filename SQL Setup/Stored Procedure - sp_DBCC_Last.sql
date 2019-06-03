@@ -15,8 +15,8 @@ AS
 Name:			DBCC checks - Report details  
 
 Author:			Tim Roberts 
-Creation Date:	04/03/2019
-Version:		1.1
+Creation Date:	03/06/2019
+Version:		1.2
 
 Summary:	Shows any databases that may have integrity issues or have not recently been checked.
 
@@ -27,7 +27,7 @@ Version Date		Name			Modification
 -------------------------------------------------------------------------------
 1.0 	02/01/2019	Tim Roberts		Initial release
 1.1		04/03/2019	Tim Roberts		Change the join on the [SourceServerList] from [MachineName] to [SQL Instance Name] as most servers capture the Instance Name as Server name + instance name.
-
+1.2		03/06/2019	Tim Roberts		Changed the join on the [MachineName] as had trouble at Comcare with it running the other way. We may need to review this and find a universal way to make this work.
 
 Look for
 ==========
@@ -52,7 +52,8 @@ SELECT
       ,[CreateVersion]
       ,[DbccFlags]
   FROM [DBAdmin].[dbo].[Checks_DBCCLastGoodCheck] DBLast
-  INNER join [dbo].[SourceServerList] SS on SS.[SQL Instance Name] = DBLast.[SqlInstance]
+  --INNER join [dbo].[SourceServerList] SS on SS.[SQL Instance Name] = DBLast.[SqlInstance]
+  INNER join [dbo].[SourceServerList] SS on SS.[MachineName] = DBLast.[ComputerName]
   ORDER BY SS.Environment, DBLast.[SqlInstance], DBLast.[Database]
  
 
